@@ -67,7 +67,7 @@ class NotesController {
       const filterTags = tags.split(",").map((tag) => tag.trim());
 
       notes = await knex("tags")
-        .select(["note.id", "notes.title", "notes.user_id"])
+        .select(["notes.id", "notes.title", "notes.user_id"])
         .where("notes.user_id", "=", user_id)
         .whereLike("notes.title", `%${title}%`)
         .whereIn("name", filterTags)
